@@ -1,0 +1,134 @@
+@import url('https://fonts.googleapis.com/css2?family=Commissioner:wght@100;300;400;500;600;700&display=swap');
+
+
+
+$mqSize: 768px;
+
+
+:root {
+    --moderateCyanHsl: 176, 50%, 47%;
+    --darkCyanHsl: 176, 72%, 28%;
+    --blackHsl: 0, 0%, 0%;
+    --whiteHsl: 0, 0%, 100%;
+    --darkGrayHsl: 0, 0%, 48%;
+    --lightGrayHsl: 0, 0%, 98%;
+    --grayHsl: 0, 0%, 96%;
+
+
+    --moderateCyan: hsl(var(--moderateCyanHsl));
+    --darkCyan: hsl(var(--darkCyanHsl));
+    --black: hsl(var(--blackHsl));
+    --white: hsl(var(--whiteHsl));
+    --darkGray: hsl(var(--darkGrayHsl));
+    --lightGray: hsl(var(--lightGrayHsl));
+    --gray: hsl(var(--grayHsl));
+
+
+    --size-4: 5rem;
+    --size-3: 3rem;
+    --size-2: 2rem;
+    --size-1: 1rem;
+    --size-0: 0.8rem;
+    
+    
+
+    --p-6: 2rem;
+    --p-5: 1.75rem;
+    --p-4: 1.5rem;
+    --p-3: 1.25rem;
+    --p-2: 1rem;
+    --p-1: 0.75rem;
+    --p-0: 0.5rem;
+    --p: 0.2rem;
+
+
+
+
+    --custom-font: 'Commissioner', sans-serif;
+
+
+
+    font-size: 16px;
+
+
+}
+
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font: inherit;
+}
+
+
+body {
+    font-size: 1rem;
+    font-family: var(--custom-font);
+    min-height: 100vh;
+    background: var(--lightGray);
+    color: var(--darkGray);
+}
+
+
+img, svg, picture,
+figure {
+    max-width: 100%;
+}
+
+p {
+    line-height: 1.6;
+}
+
+
+.flex-flow {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+
+.grid-flow {
+    display: grid;
+    gap: 1rem;
+}
+
+
+
+.sg {
+
+    --col-count: 6;
+    --col-width: 10rem;
+    display: grid;
+    grid-template-columns: 
+        minmax(2rem, 1fr) 
+        repeat(var(--col-count), minmax(0, var(--col-width)))
+        minmax(2rem, 1fr);
+
+
+
+
+    & > * {
+        grid-column: 2 / -2;
+    }
+
+
+
+
+    @media (min-width: $mqSize) {
+        &.two { --col-number: calc(var(--col-count, 6) / 2); }
+        &.three { --col-number: calc(var(--col-count, 6) / 3); }
+        &.cols {
+            & > * {grid-column: span var(--col-number);}
+            & > *:first-child {grid-column: var(--col-start, 2) / span var(--col-number);}
+            & > *:last-child {grid-column: span var(--col-number) / calc(var(--col-start, 2) * -1);}
+        }
+    }
+
+}
+
+
+
+
